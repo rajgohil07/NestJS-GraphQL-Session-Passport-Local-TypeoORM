@@ -1,0 +1,11 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type CheckConnectionDTO {
+  connectionStatus: String!
+}
+
+type Query {
+  checkServer: CheckConnectionDTO!
+}
