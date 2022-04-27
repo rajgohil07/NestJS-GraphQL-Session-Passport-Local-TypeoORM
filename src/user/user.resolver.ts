@@ -1,10 +1,24 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { UserEntity } from 'src/entity/user.entity';
 import { CheckConnectionDTO } from './dto/checkConnectionDTO';
+import { CreateUser } from './dto/createUser';
+import { UserService } from './user.service';
 
-@Resolver()
+@Resolver(() => UserEntity)
 export class UserResolver {
+  constructor(private readonly userService: UserService) {}
+
+  // to check the connection
   @Query(() => CheckConnectionDTO)
   checkServer(): CheckConnectionDTO {
     return { connectionStatus: 'connected with graphql' };
+  }
+
+  // user register functionality
+  @Mutation(() => UserEntity)
+  createUser(
+    @Args('UserCreateObject') userCreateObject: CreateUser,
+  ): Promise<UserEntity> {
+    return this.userService.createUser(userCreateObject);
   }
 }
