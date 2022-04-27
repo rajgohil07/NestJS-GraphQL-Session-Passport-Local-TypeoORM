@@ -10,8 +10,12 @@ export class UserResolver {
   }
 
   @Query(() => CheckConnectionDTO)
-  checkSession(@Context() ctx: any): CheckConnectionDTO {
-    console.log(ctx.req.session, '\n\n\n ctx is here');
+  checkSession(
+    @Context('session') session: any,
+    @Context('req') req: any,
+  ): CheckConnectionDTO {
+    console.log(req, '\n\n\n ctx is here');
+    console.log(session, '\n\n\n ctx is here');
     return { connectionStatus: 'connected with graphql' };
   }
 }
