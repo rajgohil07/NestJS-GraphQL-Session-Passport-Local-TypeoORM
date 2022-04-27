@@ -21,4 +21,13 @@ export class UserResolver {
   ): Promise<UserEntity> {
     return this.userService.createUser(userCreateObject);
   }
+
+  // user login functionality
+  @Query(() => UserEntity)
+  userLogin(
+    @Args('Email') Email: string,
+    @Args('Password') Password: string,
+  ): Promise<UserEntity> {
+    return this.userService.userLogin({ Email, Password });
+  }
 }

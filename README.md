@@ -1,7 +1,7 @@
-## Installation
+# Installation
 
 ```bash
-$ npm install
+npm install
 ```
 
 ## Query
@@ -16,15 +16,42 @@ query {
 
 ```
 
+## Mutation
+
+```bash
+# user register functionality
+mutation {
+  createUser(
+    UserCreateObject: {
+      Name: "Raj Gohil"
+      Email: "raj.famous009@gmail.com"
+      Password: "123123Raj!"
+    }
+  ) {
+    ID
+    Name
+    Email
+  }
+}
+
+```
+
+## Installed modules for local passport strategy
+
+* passport
+* passport-local
+* @nestjs/passport
+* @types/passport-local
+
 ## Running the app
 
 ```bash
 # development
-$ npm run start
+npm run start
 
 # watch mode
-$ npm run start:dev
+npm run start:dev
 
 # production mode
-$ npm run start:prod
+npm run start:prod
 ```
