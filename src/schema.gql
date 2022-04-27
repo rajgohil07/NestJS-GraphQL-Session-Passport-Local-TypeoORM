@@ -8,4 +8,5 @@ type CheckConnectionDTO {
 
 type Query {
   checkServer: CheckConnectionDTO!
+  checkSession: CheckConnectionDTO!
 }
