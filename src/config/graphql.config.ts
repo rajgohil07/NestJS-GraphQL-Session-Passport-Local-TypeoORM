@@ -12,5 +12,5 @@ export const GraphQLConfig: ApolloDriverConfig = {
       'request.credentials': 'include',
     },
   },
-  context: ({ req }): Context => ({ session: req }),
+  context: ({ req }): Context => ({ session: req.user }),
 };

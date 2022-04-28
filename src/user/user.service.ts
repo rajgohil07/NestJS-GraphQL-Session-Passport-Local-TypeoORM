@@ -62,7 +62,7 @@ export class UserService {
       throw new BadGatewayException(constant.PROVIDED_WRONG_PASSWORD);
     }
     delete findUserData.Password;
-    console.log('context body\n\n\n');
+    // console.log('context body\n\n\n');
     return findUserData;
   }
 }

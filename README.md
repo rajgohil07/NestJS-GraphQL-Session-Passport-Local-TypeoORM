@@ -40,8 +40,10 @@ mutation {
 
 * passport
 * passport-local
+* express-session
 * @nestjs/passport
 * @types/passport-local
+* @types/express-session
 
 ## Running the app
 

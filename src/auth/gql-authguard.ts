@@ -8,15 +8,22 @@ export class GQLAuthGuard extends AuthGuard('local') {
     super();
   }
 
+  //   async canActivate(context: ExecutionContext): Promise<boolean> {
+  //     const ctx = GqlExecutionContext.create(context).getContext().req;
+  //     super.logIn(ctx);
+  //     return true;
+  //   }
+
   getRequest(context: ExecutionContext) {
     const ctx = GqlExecutionContext.create(context);
     const gqlReq = ctx.getContext().req;
-    console.log('gqlReq\n\n\n', gqlReq);
+    // console.log('gqlReq\n\n\n', gqlReq);
     const {
       LoginInput: { Email, Password: password },
     } = ctx.getArgs();
     gqlReq.body.Email = Email;
     gqlReq.body.password = password;
+    // console.log('gqlReq\n\n\n', gqlReq);
     return gqlReq;
   }
 }

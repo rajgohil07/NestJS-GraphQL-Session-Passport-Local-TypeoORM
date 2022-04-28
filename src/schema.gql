@@ -24,6 +24,7 @@ type Query {
   checkServer: CheckConnectionDTO!
   userLogin(Email: String!, Password: String!): UserEntity!
   login(LoginInput: LoginInput!): UserEntity!
+  ActiveUser: UserEntity!
 }
 
 input LoginInput {
