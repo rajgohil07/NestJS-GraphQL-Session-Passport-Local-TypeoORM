@@ -23,7 +23,7 @@ export class GQLAuthGuard extends AuthGuard('local') {
     } = ctx.getArgs();
     gqlReq.body.Email = Email;
     gqlReq.body.password = password;
-    // console.log('gqlReq\n\n\n', gqlReq);
+    console.log('in a get request\n\n\n');
     return gqlReq;
   }
 }

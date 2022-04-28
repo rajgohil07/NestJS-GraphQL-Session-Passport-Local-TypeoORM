@@ -18,6 +18,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
     try {
       const userData = await this.authService.validateUser(Email, password);
       return done(null, userData);
+      return userData;
     } catch (error) {
       throw new InternalServerErrorException(error.message);
     }

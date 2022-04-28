@@ -10,11 +10,7 @@ import { UserEntity } from 'src/entity/user.entity';
 
 @Module({
   exports: [LocalStrategy],
-  imports: [
-    PassportModule.register({ defaultStrategy: 'local', session: true }),
-    TypeOrmModule.forFeature([UserEntity]),
-    UserModule,
-  ],
+  imports: [PassportModule, TypeOrmModule.forFeature([UserEntity]), UserModule],
   providers: [LocalStrategy, AuthService, AuthResolver, SessionSerializer],
 })
 export class AuthModule {}

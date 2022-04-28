@@ -1,16 +1,17 @@
 import { UseGuards } from '@nestjs/common';
-import { Args, Context, Query, Resolver } from '@nestjs/graphql';
+import { Args, Context, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { UserEntity } from 'src/entity/user.entity';
 import { AuthService } from './auth.service';
 import { LoginInput } from './dto/createinput';
 import { GQLAuthGuard } from './gql-authguard';
+import { SessionLocalAuthGuard } from './session.auth.guard';
 
 @Resolver()
 export class AuthResolver {
   constructor(private readonly authService: AuthService) {}
 
-  @Query(() => UserEntity)
-  @UseGuards(GQLAuthGuard)
+  @Mutation(() => UserEntity)
+  @UseGuards(GQLAuthGuard, new SessionLocalAuthGuard())
   login(
     @Args('LoginInput') loginInput: LoginInput,
     // @Context('session') session: any,
@@ -26,12 +27,13 @@ export class AuthResolver {
   }
 
   @Query(() => UserEntity)
-  ActiveUser(@Context() Context: any) {
+  ActiveUser(@Context('session') Context: any) {
     console.log(Context, 'Context.req.user\n\n\n');
-    console.log(Context.req.user, 'Context.req.user\n\n\n');
+    // console.log(Context.req.user, 'Context.req.user\n\n\n');
     // console.log(Context.req.session, 'Context.req.user\n\n\n');
     // console.log(Context.user, 'Context.req.user\n\n\n');
-    return Context.req.user;
+    return Context;
+    // return Context.req.user;
     // return this.authService.login(loginInput);
   }
 }
