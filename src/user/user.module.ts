@@ -11,7 +11,6 @@ import { UserService } from './user.service';
     TypeOrmModule.forFeature([UserEntity]),
     GraphQLModule.forRoot(GraphQLConfig),
   ],
-  exports: [UserService],
   providers: [UserService, UserResolver],
 })
 export class UserModule {}

@@ -1,5 +1,4 @@
 import { ApolloDriverConfig, ApolloDriver } from '@nestjs/apollo';
-import { Context } from 'apollo-server-core';
 import { join } from 'path';
 
 export const GraphQLConfig: ApolloDriverConfig = {
@@ -12,5 +11,4 @@ export const GraphQLConfig: ApolloDriverConfig = {
       'request.credentials': 'include',
     },
   },
-  context: ({ req }): Context => ({ session: req.user }),
 };

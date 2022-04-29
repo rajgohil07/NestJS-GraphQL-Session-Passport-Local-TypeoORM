@@ -1,4 +1,5 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { User } from 'src/custom.decoder/user.decoder';
 import { UserEntity } from 'src/entity/user.entity';
 import { CheckConnectionDTO } from './dto/checkConnectionDTO';
 import { CreateUser } from './dto/createUser';
@@ -22,12 +23,9 @@ export class UserResolver {
     return this.userService.createUser(userCreateObject);
   }
 
-  // user login functionality
   @Query(() => UserEntity)
-  userLogin(
-    @Args('Email') Email: string,
-    @Args('Password') Password: string,
-  ): Promise<UserEntity> {
-    return this.userService.userLogin({ Email, Password });
+  ActiveUser(@User() user: UserEntity) {
+    console.log(user, 'user.req.user\n\n\n');
+    return user;
   }
 }

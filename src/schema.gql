@@ -22,22 +22,21 @@ type CheckConnectionDTO {
 
 type Query {
   checkServer: CheckConnectionDTO!
-  userLogin(Email: String!, Password: String!): UserEntity!
   ActiveUser: UserEntity!
-}
-
-type Mutation {
-  createUser(UserCreateObject: CreateUser!): UserEntity!
   login(LoginInput: LoginInput!): UserEntity!
 }
 
-input CreateUser {
-  Name: String!
+input LoginInput {
   Email: String!
   Password: String!
 }
 
-input LoginInput {
+type Mutation {
+  createUser(UserCreateObject: CreateUser!): UserEntity!
+}
+
+input CreateUser {
+  Name: String!
   Email: String!
   Password: String!
 }
