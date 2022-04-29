@@ -33,7 +33,6 @@ export class UserResolver {
     const userData: UserEntity[] | [] = await this.userService.getAllUserData(
       user.ID,
     );
-    console.log({ AllUserData: userData, CurrentUser: user });
     return { AllUserData: userData, CurrentUser: user };
   }
 }
