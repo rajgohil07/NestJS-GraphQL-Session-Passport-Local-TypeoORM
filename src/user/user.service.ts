@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { constant } from 'src/common/constant';
 import { hashPassword } from 'src/common/helper';
 import { UserEntity } from 'src/entity/user.entity';
-import { Repository } from 'typeorm';
+import { Not, Repository } from 'typeorm';
 import { CreateUser } from './dto/createUser';
 
 @Injectable()
@@ -33,5 +33,14 @@ export class UserService {
     const createUserQuery = this.userRepository.create(dataObject);
     const saveUserData = await this.userRepository.save(createUserQuery);
     return saveUserData;
+  }
+
+  // get all user data expect current user
+  async getAllUserData(UserID: number): Promise<UserEntity[]> {
+    const findAllData = await this.userRepository.find({
+      where: { ID: Not(UserID) },
+      select: ['ID', 'Name', 'Email'],
+    });
+    return findAllData;
   }
 }

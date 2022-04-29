@@ -5,6 +5,7 @@ import {
   UnauthorizedException,
 } from '@nestjs/common';
 import { GqlExecutionContext } from '@nestjs/graphql';
+import { constant } from 'src/common/constant';
 
 @Injectable()
 export class IsAuthenticated implements CanActivate {
@@ -12,7 +13,7 @@ export class IsAuthenticated implements CanActivate {
     const ctxReq = GqlExecutionContext.create(context).getContext().req;
     const AuthenticationStatus = ctxReq.isAuthenticated();
     if (!AuthenticationStatus) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException(constant.UNAUTHORIZED_ACCESS_MESSAGE);
     }
     return AuthenticationStatus;
   }

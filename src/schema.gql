@@ -20,6 +20,17 @@ type CheckConnectionDTO {
   connectionStatus: String!
 }
 
+type getAttributesAllUser {
+  ID: Int!
+  Email: String!
+  Name: String!
+}
+
+type AllUserResponseDTO {
+  CurrentUser: getAttributesAllUser!
+  AllUserData: [getAttributesAllUser!]!
+}
+
 type LoginResponse {
   LoginSuccessMessage: String!
   CurrentUser: UserEntity!
@@ -27,7 +38,7 @@ type LoginResponse {
 
 type Query {
   checkServer: CheckConnectionDTO!
-  ActiveUser: UserEntity!
+  getAllUserData: AllUserResponseDTO!
   login(LoginInput: LoginInput!): LoginResponse!
 }
 

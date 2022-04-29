@@ -4,4 +4,5 @@ export const constant = {
   EMAIL_NOT_FOUND: 'Sorry, provided email address does not exist in the system',
   PROVIDED_WRONG_PASSWORD: 'Provided password is in-correct please try again?',
   LOGIN_SUCCESSFUL: 'You are  login successfully',
+  UNAUTHORIZED_ACCESS_MESSAGE: 'Please, login to gain access',
 };
