@@ -20,10 +20,15 @@ type CheckConnectionDTO {
   connectionStatus: String!
 }
 
+type LoginResponse {
+  LoginSuccessMessage: String!
+  CurrentUser: UserEntity!
+}
+
 type Query {
   checkServer: CheckConnectionDTO!
   ActiveUser: UserEntity!
-  login(LoginInput: LoginInput!): UserEntity!
+  login(LoginInput: LoginInput!): LoginResponse!
 }
 
 input LoginInput {

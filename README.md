@@ -1,4 +1,17 @@
-# Installation
+# Description
+
+This is a basic project that shows how to use the nestjs passport local strategy, along with graphql and express sessions.
+
+## keywords
+
+*NestJS
+*GraphQL
+*Express-Session
+*Passport
+*Passport local strategy
+*TypeORM
+
+## Installation
 
 ```bash
 npm install
@@ -11,6 +24,19 @@ npm install
 query {
   checkServer {
     connectionStatus
+  }
+}
+# to login the user
+query {
+  login(
+    LoginInput: { Email: "raj.famous009@gmail.com", Password: "123123Raj!" }
+  ) {
+    LoginSuccessMessage
+    CurrentUser {
+      ID
+      Name
+      Email
+    }
   }
 }
 
