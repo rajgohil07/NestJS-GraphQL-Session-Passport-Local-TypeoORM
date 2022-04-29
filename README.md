@@ -4,12 +4,12 @@ This is a basic project that shows how to use the nestjs passport local strategy
 
 ## keywords
 
-*NestJS
-*GraphQL
-*Express-Session
-*Passport
-*Passport local strategy
-*TypeORM
+* NestJS
+* GraphQL
+* Express-Session
+* Passport
+* Passport local strategy
+* TypeORM
 
 ## Installation
 
@@ -26,6 +26,7 @@ query {
     connectionStatus
   }
 }
+
 # to login the user
 query {
   login(
